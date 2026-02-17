@@ -1,0 +1,8 @@
+name: robot_lab
+channels:
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - python=3.12
+prefix: /Users/tunt/anaconda3/envs/robot_lab

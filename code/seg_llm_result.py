@@ -6,7 +6,7 @@ from PIL import Image
 
 # 1. Initialize Gemini Client
 # Ensure GEMINI_API_KEY is in your environment variables
-client = genai.Client(api_key= "AIzaSyBHBG9X_BQG50MQDwfgSa4X4OUz2pZr1IQ")
+client = genai.Client(api_key= "AIzaSyC4CnjfJtxRxUeigDqP_JN7QCheqoS0530")
 
 # 2. Load YOLO
 model = YOLO("yolo26n-seg.pt")
@@ -109,6 +109,11 @@ if captured_rgb_crop is not None and captured_mask_crop is not None:
     print(f"GEMINI ANALYSIS OF {captured_class.upper()}")
     print("="*40)
     print(response.text)
+    results = model.val() 
+    # Access specific values
+    print(f"Precision: {results.results_dict['metrics/precision(B)']}")
+    print(f"Recall: {results.results_dict['metrics/recall(B)']}")
+    print(f"F1-Score: {results.f1}")
 
 else:
     print("[SYSTEM] No object detected. Nothing sent to Gemini.")
